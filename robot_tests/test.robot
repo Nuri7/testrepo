@@ -3,5 +3,6 @@ Library    Browser
 
 *** Test Cases ***
 Example Test Case
-    Open Browser    https://www.google.com    chromium
+    New Browser       chromium    
+    New Page    https://www.google.com
     Close Browser

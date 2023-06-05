@@ -1,0 +1,26 @@
+name: Robot Framework Tests
+
+on:
+  push:
+    branches:
+      - main  # Adjust to match your branch name
+
+jobs:
+  robot-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8.5'  # Specify the desired Python version
+      - name: Install dependencies
+        run: |
+          pip install --upgrade robotframework 
+          pip install --upgrade robotframework-browser
+          rfbrowser init
+      - name: Run Robot Framework tests
+        run: |
+          robot --outputdir test-reports/ robot_tests/test.robot

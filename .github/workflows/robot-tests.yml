@@ -30,3 +30,9 @@ jobs:
         with:
           name: reports
           path: test-reports/
+      - name: Publish Robot Framework test results
+        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        if: ${{ always() && github.actor != 'dependabot[bot]' }}
+        with:
+          junit_files: test-reports/outputxunit.xml
+          check_name: Robot Framework FE tests

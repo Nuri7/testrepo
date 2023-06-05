@@ -23,7 +23,7 @@ jobs:
           rfbrowser init
       - name: Run Robot Framework tests
         run: |
-          robot --outputdir test-reports/ robot_tests/test.robot
+          robot --outputdir test-reports/ -x outputxunit.xml robot_tests/test.robot
       - name: Upload RF test results
         uses: actions/upload-artifact@v3
         if: always()
